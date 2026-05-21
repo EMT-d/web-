@@ -1,0 +1,90 @@
+### 用户注册（bcrypt 需 password 字段足够长，见 manifest/sql/upgrade_user_password.sql）
+POST http://127.0.0.1:8000/api/user/register
+Content-Type: application/json
+
+{
+  "studentNo": "2026001",
+  "username": "张三",
+  "password": "123456"
+}
+
+### 用户登录
+POST http://127.0.0.1:8000/api/user/login
+Content-Type: application/json
+
+{
+  "studentNo": "2026001",
+  "password": "123456"
+}
+
+### 用户列表
+GET http://127.0.0.1:8000/api/user/list
+
+### 用户更新（仅 username / password）
+PUT http://127.0.0.1:8000/api/user/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "username": "张四"
+}
+
+### 用户删除
+DELETE http://127.0.0.1:8000/api/user/delete?id=1
+
+### 图书新增（表字段：book_name, author, stock）
+POST http://127.0.0.1:8000/api/book/add
+Content-Type: application/json
+
+{
+  "bookName": "Go语言实战",
+  "author": "William Kennedy",
+  "stock": 5
+}
+
+### 图书列表
+GET http://127.0.0.1:8000/api/book/list
+
+### 图书更新
+PUT http://127.0.0.1:8000/api/book/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "bookName": "Go语言实战（第2版）",
+  "author": "William Kennedy",
+  "stock": 4
+}
+
+### 图书删除
+DELETE http://127.0.0.1:8000/api/book/delete?id=1
+
+### 借阅新增（studentNo 对应 user 表学号；表 borrow_record）
+POST http://127.0.0.1:8000/api/borrow/add
+Content-Type: application/json
+
+{
+  "studentNo": "2026001",
+  "bookId": 1
+}
+
+### 借阅列表
+GET http://127.0.0.1:8000/api/borrow/list
+
+### 借阅详情
+GET http://127.0.0.1:8000/api/borrow/detail?id=1
+
+### 借阅更新（字段含 return_time 等）
+PUT http://127.0.0.1:8000/api/borrow/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "status": 3
+}
+
+### 归还图书（写 return_time）
+POST http://127.0.0.1:8000/api/borrow/return?id=1
+
+### 删除借阅记录
+DELETE http://127.0.0.1:8000/api/borrow/delete?id=1
