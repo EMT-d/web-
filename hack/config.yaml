@@ -1,0 +1,9 @@
+# GoFrame CLI：`gf gen dao` 配置（与官方文档一致 https://goframe.org/docs/cli/gen-dao ）
+# 用法：安装 gf 工具后，在项目根目录执行 `gf gen dao`
+gfcli:
+  gen:
+    dao:
+      - link: "mysql:root:@tcp(127.0.0.1:3306)/book_borrow?charset=utf8mb4&parseTime=true&loc=Local"
+        tables: "user,book,borrow_record"
+        descriptionTag: true
+        noModelComment: false

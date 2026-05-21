@@ -1,0 +1,9 @@
+# XAMPP MySQL：root / 无密码 / 库 book_borrow / 表 user, book, borrow_record
+# 若 root 有密码：mysql:root:你的密码@tcp(127.0.0.1:3306)/book_borrow?...
+# bcrypt 密码需 user.password 足够长，见 manifest/sql/upgrade_user_password.sql
+server:
+  address: ":8000"
+
+database:
+  default:
+    link: "mysql:root:@tcp(127.0.0.1:3306)/book_borrow?charset=utf8mb4&parseTime=true&loc=Local"
